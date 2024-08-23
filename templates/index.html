@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ứng dụng xử lý dữ liệu</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Tải lên và Xử lý Dữ liệu</h1>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <input type="file" name="file">
+            <button type="submit" class="btn btn-primary">Tải lên</button>
+        </form>
+        {% if data_table %}
+            <h2>Dữ liệu đã xử lý</h2>
+            <div class="table-responsive fixed-table">
+                {{ data_table | safe }}
+            </div>
+        {% endif %}
+        {% if hist_aqi_path %}
+            <h2>Biểu đồ Histogram của Chỉ số AQI</h2>
+            <img src="{{ hist_aqi_path }}" alt="Histogram AQI" class="img-fluid">
+        {% endif %}
+        {% if hist_co_path %}
+            <h2>Biểu đồ Histogram của CO</h2>
+            <img src="{{ hist_co_path }}" alt="Histogram CO" class="img-fluid">
+        {% endif %}
+        {% if hist_no2_path %}
+            <h2>Biểu đồ Histogram của NO2</h2>
+            <img src="{{ hist_no2_path }}" alt="Histogram NO2" class="img-fluid">
+        {% endif %}
+        {% if hist_pm10_path %}
+            <h2>Biểu đồ Histogram của PM10</h2>
+            <img src="{{ hist_pm10_path }}" alt="Histogram PM10" class="img-fluid">
+        {% endif %}
+        {% if hist_pm25_path %}
+            <h2>Biểu đồ Histogram của PM2.5</h2>
+            <img src="{{ hist_pm25_path }}" alt="Histogram PM2.5" class="img-fluid">
+        {% endif %}
+        {% if box_path %}
+            <h2>Biểu đồ Boxplot của các chất ô nhiễm không khí</h2>
+            <img src="{{ box_path }}" alt="Boxplot" class="img-fluid">
+        {% endif %}
+        {% if scatter_aqi_pm25_path %}
+            <h2>Biểu đồ Scatter Plot giữa Chỉ số AQI và PM2.5</h2>
+            <img src="{{ scatter_aqi_pm25_path }}" alt="Scatter AQI vs PM2.5" class="img-fluid">
+        {% endif %}
+        {% if box_aqi_month_path %}
+            <h2>Biểu đồ Boxplot của Chỉ số AQI theo tháng</h2>
+            <img src="{{ box_aqi_month_path }}" alt="Boxplot AQI theo tháng" class="img-fluid">
+        {% endif %}
+        {% if box_co_month_path %}
+            <h2>Biểu đồ Boxplot của CO theo tháng</h2>
+            <img src="{{ box_co_month_path }}" alt="Boxplot CO theo tháng" class="img-fluid">
+        {% endif %}
+        {% if line_path %}
+            <h2>Biểu đồ đường của Chỉ số AQI theo thời gian</h2>
+            <img src="{{ line_path }}" alt="Lineplot AQI theo thời gian" class="img-fluid">
+        {% endif %}
+        {% if scatter_no2_co_path %}
+            <h2>Biểu đồ Scatter Plot giữa NO2 và CO</h2>
+            <img src="{{ scatter_no2_co_path }}" alt="Scatter NO2 vs CO" class="img-fluid">
+        {% endif %}
+        {% if scatter_pm10_co_path %}
+            <h2>Biểu đồ Scatter Plot giữa PM10 và CO</h2>
+            <img src="{{ scatter_pm10_co_path }}" alt="Scatter PM10 vs CO" class="img-fluid">
+        {% endif %}
+        {% if scatter_pm25_no2_path %}
+            <h2>Biểu đồ Scatter Plot giữa PM2.5 và NO2</h2>
+            <img src="{{ scatter_pm25_no2_path }}" alt="Scatter PM2.5 vs NO2" class="img-fluid">
+        {% endif %}
+        {% if scatter_aqi_no2_path %}
+            <h2>Biểu đồ Scatter Plot giữa AQI và NO2</h2>
+            <img src="{{ scatter_aqi_no2_path }}" alt="Scatter AQI vs NO2" class="img-fluid">
+        {% endif %}
+        {% if heat_path %}
+            <h2>Biểu đồ Heatmap của Ma trận Tương quan</h2>
+            <img src="{{ heat_path }}" alt="Heatmap" class="img-fluid">
+        {% endif %}
+        {% if pair_path %}
+            <h2>Biểu đồ phân tán (Pairplot) của các chất ô nhiễm không khí</h2>
+            <img src="{{ pair_path }}" alt="Pairplot" class="img-fluid">
+        {% endif %}
+        {% if processed_file %}
+            <h2>Tải xuống Dữ liệu đã Xử lý</h2>
+            <a href="/download/{{ processed_file }}" class="btn btn-success">Tải xuống CSV đã xử lý</a>
+        {% endif %}
+    </div>
+</body>
+</html>
